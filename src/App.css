@@ -57,11 +57,29 @@ margin: 0;
 line-height: 1.5;
 color: #4b5563;
 }
+
 @media (max-width: 768px) {
-.cabecalho h1 {
-font-size: 1.8rem;
+    .cabecalho h1 {
+        font-size: 1.8rem;
+    }
 }
+
+.botao-alternar {
+ margin: 0 0 24px;
+ padding: 10px 18px;
+ background-color: #1d4ed8;
+ color: #ffffff;
+ border: none;
+ border-radius: 6px;
+ font-size: 1rem;
+ cursor: pointer;
+}
+
+.botao-alternar:hover {
+ background-color: #1e40af;
+}
+
 .modulos {
 grid-template-columns: 1fr;
 }
-}
+
