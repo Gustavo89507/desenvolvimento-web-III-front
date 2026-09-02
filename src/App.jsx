@@ -6,6 +6,9 @@ import CardModulo from './components/CardModulo'
 import Clientes from './pages/Clientes'
 import ListaClientes from './pages/ListaClientes'
 import CadastroCliente from './pages/CadastroCliente'
+import Funcionários from './pages/Funcionarios'
+import ListaFuncionarios from './pages/ListaFuncionarios'
+import CadastroFuncionario from './pages/CadastroFuncionario'
 function App() {
  const [mostrarModulos, setMostrarModulos] =
 useState(true)
@@ -70,13 +73,24 @@ mostrarModulos)}
  </div>
  }
  />
- <Route path="/clientes" element={<Clientes />} />
+ <Route 
+ path="/clientes" 
+ element={<Clientes />} />
  <Route
  path="/clientes/listar"
  element={<ListaClientes />}/>
  <Route
  path="/clientes/cadastrar"
  element={<CadastroCliente />}/>
+ <Route 
+ path="/funcionarios" 
+ element={<Funcionários />} />
+ <Route
+ path="/funcionarios/listar"
+ element={<ListaFuncionarios />}/>
+ <Route
+ path="/funcionarios/cadastrar"
+ element={<CadastroFuncionario />}/>
  </Routes>
  )
 }
