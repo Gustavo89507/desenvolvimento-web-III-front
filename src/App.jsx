@@ -1,9 +1,14 @@
 import { useState } from 'react'
+import { Routes, Route } from 'react-router'
 import './App.css'
 import Cabecalho from './components/Cabecalho'
 import CardModulo from './components/CardModulo'
+import Clientes from './pages/Clientes'
+import ListaClientes from './pages/ListaClientes'
+import CadastroCliente from './pages/CadastroCliente'
 function App() {
-    const [mostrarModulos, setMostrarModulos] = useState(true)
+ const [mostrarModulos, setMostrarModulos] =
+useState(true)
  const [modulos, setModulos] = useState([
  {
  id: 1,
@@ -14,6 +19,7 @@ function App() {
  id: 2,
  titulo: 'Gerenciamento de Clientes',
  descricao: 'Cadastre e consulte os clientes da empresa.',
+ rota: '/clientes',
  },
  {
  id: 3,
@@ -24,39 +30,54 @@ function App() {
  id: 4,
  titulo: 'Gerenciamento de Vendas',
  descricao: 'Registre e consulte as vendas realizadas.',
-},
-
+ },
  ])
- 
-return (
-<div className="aplicacao">
-<Cabecalho />
-<main className="conteudo-principal">
-<p className="introducao">
-Aplicação desenvolvida nas disciplinas de Desenvolvimento Web III e
-Tópicos de Programação II.
-</p>
-<button
+ return (
+ <Routes>
+    <Route
+ path="/"
+ element={
+ <div className="aplicacao">
+ <Cabecalho />
+ <main className="conteudo-principal">
+ <p className="introducao">
+ Aplicação desenvolvida nas disciplinas de
+Desenvolvimento Web
+ III e Tópicos de Programação II.
+ </p>
+ <button
  type="button"
  className="botao-alternar"
- onClick={() => setMostrarModulos(!mostrarModulos)}
->
- {mostrarModulos ? 'Ocultar módulos' : 'Exibir módulos'}
-</button>
-{mostrarModulos && (
- <section className="modulos">
+ onClick={() => setMostrarModulos(!
+mostrarModulos)}
+ >
+ {mostrarModulos ? 'Ocultar módulos' :
+'Exibir módulos'}
+ </button>
+ {mostrarModulos && (
+    <section className="modulos">
  {modulos.map((modulo) => (
  <CardModulo
  key={modulo.id}
  titulo={modulo.titulo}
  descricao={modulo.descricao}
+ rota={modulo.rota}
  />
  ))}
  </section>
-)}
-
-</main>
-</div>
-)
+ )}
+ </main>
+ </div>
+ }
+ />
+ <Route path="/clientes" element={<Clientes />} />
+ <Route
+ path="/clientes/listar"
+ element={<ListaClientes />}/>
+ <Route
+ path="/clientes/cadastrar"
+ element={<CadastroCliente />}/>
+ </Routes>
+ )
 }
 export default App
