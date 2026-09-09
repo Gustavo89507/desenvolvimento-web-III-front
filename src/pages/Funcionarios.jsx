@@ -1,10 +1,10 @@
 import { Link } from 'react-router'
 function Funcionarios() {
  return (
- <div className="pagina-funcionarios">
+ <div className="pagina-clientes">
  <h1>Gerenciamento de Funcionarios</h1>
  <p>Escolha uma das opções:</p>
- <div className="opcoes-funcionarios">
+ <div className="opcoes-clientes">
  <Link to="/Funcionarios/listar">
  Listar Funcionarios
  </Link>

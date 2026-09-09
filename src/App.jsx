@@ -6,6 +6,8 @@ import CardModulo from './components/CardModulo'
 import Clientes from './pages/Clientes'
 import ListaClientes from './pages/ListaClientes'
 import CadastroCliente from './pages/CadastroCliente'
+import clientesIniciais from './data/clientes'
+import EditarCliente from './pages/EditarCliente'
 import Funcionários from './pages/Funcionarios'
 import ListaFuncionarios from './pages/ListaFuncionarios'
 import CadastroFuncionario from './pages/CadastroFuncionario'
@@ -28,6 +30,7 @@ useState(true)
  id: 3,
  titulo: 'Gerenciamento de Funcionários',
  descricao: 'Cadastre e consulte os funcionários da empresa.',
+ rota: '/funcionarios'
  },
  {
  id: 4,
@@ -35,6 +38,31 @@ useState(true)
  descricao: 'Registre e consulte as vendas realizadas.',
  },
  ])
+ const [clientes, setClientes] = useState(clientesIniciais)
+function adicionarCliente(novoCliente) {
+ const clienteComId = {
+ id: Date.now(),
+ ...novoCliente,
+ }
+ setClientes((listaAtual) => [
+ ...listaAtual,
+ clienteComId,
+ ])
+}
+function excluirCliente(id) {
+ setClientes((listaAtual) =>
+ listaAtual.filter((cliente) => cliente.id !== id)
+ )
+}
+function alterarCliente(clienteAtualizado) {
+ setClientes((listaAtual) =>
+ listaAtual.map((cliente) =>
+ cliente.id === clienteAtualizado.id
+ ? clienteAtualizado
+ : cliente
+ )
+ )
+}
  return (
  <Routes>
     <Route
@@ -78,10 +106,13 @@ mostrarModulos)}
  element={<Clientes />} />
  <Route
  path="/clientes/listar"
- element={<ListaClientes />}/>
+element={<ListaClientes clientes={clientes} aoExcluir={excluirCliente}/>} />
  <Route
  path="/clientes/cadastrar"
- element={<CadastroCliente />}/>
+element={<CadastroCliente aoCadastrar={adicionarCliente} />}/>
+<Route
+ path="/clientes/editar/:id"
+ element={<EditarCliente clientes={clientes} aoAlterar={alterarCliente}/>}/>
  <Route 
  path="/funcionarios" 
  element={<Funcionários />} />

@@ -25,10 +25,10 @@ id: 3,
  },
  ]
  return (
- <main className="pagina-funcionarios">
+ <main className="pagina-clientes">
  <h1>Lista de Funcionarios</h1>
- <ul className="lista-funcionarios">
- {Funcionarios.map((Funcionario) => (
+ <ul className="lista-clientes">
+ {funcionarios.map((Funcionario) => (
  <li key={Funcionario.id}>
  <strong>{Funcionario.nome}</strong>
  <span>CPF: {Funcionario.cpf}</span>

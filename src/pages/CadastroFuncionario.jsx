@@ -19,9 +19,9 @@ const [cnpj, setCNPJ] = useState('')
  alert('Funcionario cadastrado com sucesso!')
  }
  return (
- <main className="pagina-funcionarios">
+ <main className="pagina-clientes">
     <h1>Cadastrar novo Funcionario</h1>
- <form className="formulario-funcionario"
+ <form className="formulario-cliente"
 onSubmit={cadastrarFuncionario}>
  <label htmlFor="nome">Nome</label>
  <input
@@ -32,15 +32,13 @@ onSubmit={cadastrarFuncionario}>
 setNome(evento.target.value)}
  required
  />
- <label htmlFor="cpf">CPF</label>
+ <label htmlFor="cnpj">CNPJ</label>
  <input
- id="cpf"
+ id="CNPJ"
  type="text"
- value={cpf}
+ value={cnpj}
  onChange={(evento) =>
-setCpf(evento.target.value)}
- maxLength="11"
- required
+setCNPJ(evento.target.value)}
  />
  <label htmlFor="telefone">Telefone</label>
  <input
@@ -58,14 +56,7 @@ setTelefone(evento.target.value)}
  onChange={(evento) =>
 setEmail(evento.target.value)}
  />
- <label htmlFor="cnpj">CNPJ</label>
- <input
- id="CNPJ"
- type="text"
- value={cnpj}
- onChange={(evento) =>
-setCNPJ(evento.target.value)}
- />
+ 
  <button type="submit">Cadastrar Funcionario</button>
  </form>
  <Link to="/funcionarios">Voltar para Gerenciamento de Funcionarios</Link>

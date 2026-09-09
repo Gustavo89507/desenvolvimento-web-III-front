@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router'
-function CadastroCliente() {
+function CadastroCliente({ aoCadastrar }) {
  const [nome, setNome] = useState('')
  const [cpf, setCpf] = useState('')
  const [telefone, setTelefone] = useState('')
@@ -13,8 +13,12 @@ function CadastroCliente() {
  telefone,
  email,
  }
- console.log(novoCliente)
- alert('Cliente cadastrado com sucesso!')
+ aoCadastrar(novoCliente)
+setNome('')
+setCpf('')
+setTelefone('')
+setEmail('')
+alert('Cliente cadastrado com sucesso!')
  }
  return (
  <main className="pagina-clientes">
